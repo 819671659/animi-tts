@@ -1,0 +1,59 @@
+server:
+  port: 2211
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/local_tts_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root  # 请修改为实际密码
+  
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  
+  mail:
+    host: smtp.qq.com
+    username: 819671659@qq.com # 修改为您的 QQ 邮箱
+    password: sglpqehlovvhbbfb    # 注意：这里必须是“授权码”，非邮箱登录密码！
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+# JWT 配置
+jwt:
+  secret: tts_system_secret_key_2026
+  expiration: 86400 # 24 小时
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.tts.entity
+  configuration:
+    map-underscore-to-camel-case: true  # 下划线转驼峰
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted  # 逻辑删除字段
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# TTS 配置
+tts:
+  # 音频文件存储根路径（绝对物理路径，确保持久化且不受应用重启影响）
+  audio-base-path: f:/antigravity_space/tts-storage/
+  # Python 执行路径
+  python-path: E:\develop\python310\python.exe
+  # TTS 脚本路径
+  script-path: src/main/resources/scripts/
+
+# 日志配置
+logging:
+  level:
+    com.tts: INFO
+    com.tts.mapper: DEBUG

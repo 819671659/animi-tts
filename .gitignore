@@ -1,0 +1,45 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build and dependencies
+node_modules/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+logs/
+
+# Database / Storage (Crucial!)
+local-tts-system/tts-storage/
+tts-storage/
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Temp
+tmp/
+temp/
+
+# Environment
+.env
+local.properties
+application-local.yml
